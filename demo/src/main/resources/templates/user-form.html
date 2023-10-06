@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Form</title>
+</head>
+<body>
+    <h2>User Information</h2>
+    <form action="/save" method="post" th:object="${user}">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+
+        <label for="middleName">Middle Name:</label>
+        <input type="text" id="middleName" name="middleName" required><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        function generatePassword() {
+            var firstName = document.getElementById("firstName").value;
+            var middleName = document.getElementById("middleName").value;
+            var lastName = document.getElementById("lastName").value;
+            
+            var firstNameInitials = firstName.substring(0, 2);
+            var middleNameInitials = middleName.substring(0, 2);
+            var lastNameInitials = lastName.substring(0, 2);
+    
+            var randomDigits = Math.floor(100 + Math.random() * 900);
+    
+            var generatedPassword = firstNameInitials + middleNameInitials + lastNameInitials + randomDigits;
+    
+            document.getElementById("password").value = generatedPassword;
+        }
+    </script>
+    
+</body>
+</html>
